@@ -5,39 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="76326ec8-54cc-4d24-8846-fe73ff9abfd8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/annotations/Optional.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/annotations/Parameterizable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/annotations/Random.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/annotations/RandomIfNotNull.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/config/Config.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/generators/RandomData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/generators/TestDataGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/BaseModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/ParentProject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/Project.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/Role.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/Roles.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/CheckedRequests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/CrudInterface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/Request.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/UncheckedRequests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/checked/CheckedBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/enums/Endpoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/unchecked/UncheckedBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/spec/Specifications.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/log4j.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/BaseTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/api/BaseApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/api/TeamcityCreateProjectTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -222,7 +190,7 @@
       <option name="presentableId" value="Default" />
       <updated>1739687180966</updated>
       <workItem from="1741117949413" duration="16637000" />
-      <workItem from="1741203376521" duration="62506000" />
+      <workItem from="1741203376521" duration="63408000" />
     </task>
     <servers />
   </component>
