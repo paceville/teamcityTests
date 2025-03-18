@@ -25,6 +25,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
     public void beforeEach() {
         user = createUser();
     }
+
     @Test
     @DisplayName("User should be able to create a new project")
     @Tags({
