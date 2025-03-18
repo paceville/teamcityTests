@@ -7,10 +7,7 @@ import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import com.example.teamcity.api.spec.Specifications;
 import org.apache.http.HttpStatus;
 import org.hamcrest.Matchers;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Tags;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.platform.suite.api.SuiteDisplayName;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -22,7 +19,12 @@ import static io.qameta.allure.Allure.step;
 
 @SuiteDisplayName("newProjectCreation")
 public class TeamcityCreateProjectTest extends BaseApiTest {
+    User user;
 
+    @BeforeEach
+    public void beforeEach() {
+        user = createUser();
+    }
     @Test
     @DisplayName("User should be able to create a new project")
     @Tags({
@@ -30,7 +32,6 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("positive")
     })
     public void userCreatesProjectTest() {
-        var user = createUser();
         var project = generate(Project.class);
         var projectId = createProject(user, project);
 
@@ -49,9 +50,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("positive")
     })
     public void userCreatesProjectWithEmptyLocatorTest() {
-        var user = createUser();
-
-        step("create a project with empty locator by user", () -> {
+         step("create a project with empty locator by user", () -> {
             var project = generate(Project.class);
             project.setLocator("");
             new UncheckedBase(Specifications.authSpec(user), PROJECTS)
@@ -67,7 +66,6 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("negative")
     })
     public void userCreatesTwoProjectsWithTheSameIdTest() {
-        var user = createUser();
         var firstProject = generate(Project.class);
         createProject(user, firstProject);
 
@@ -86,7 +84,6 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("negative")
     })
     public void userCreatesTwoProjectsWithTheSameNameTest() {
-        var user = createUser();
         var firstProject = generate(Project.class);
         createProject(user, firstProject);
 
@@ -106,8 +103,6 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("negative")
     })
     public void userCreatesTwoProjectsWithoutNameTest() {
-        var user = createUser();
-
         step("create a project with empty name by user", () -> {
             var project = generate(Project.class, (String) null);
             new UncheckedBase(Specifications.authSpec(user), PROJECTS)
@@ -124,8 +119,6 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("negative")
     })
     public void userCreatesProjectWithEmptyIdTest() {
-        var user = createUser();
-
         step("create a project with empty ID by user", () -> {
             var project = generate(Project.class);
            project.setId("");
@@ -150,7 +143,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
     }
 
 
-    /** Other checks
+    /* Other checks
      * positive tests:
      * create a new project with right role but not admin
      * create a new project with the minimum required fields
