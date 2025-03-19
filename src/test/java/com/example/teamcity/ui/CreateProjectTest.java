@@ -1,13 +1,24 @@
 package com.example.teamcity.ui;
 
+import com.example.teamcity.api.models.User;
+import com.example.teamcity.ui.pages.LoginPage;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static com.example.teamcity.api.generators.TestDataGenerator.generate;
+import static com.example.teamcity.api.requests.enums.Endpoint.USERS;
 import static io.qameta.allure.Allure.step;
 
 @Tag("regression")
 public class CreateProjectTest extends BaseUiTests {
+    User user;
+
+    @BeforeEach
+    public void setup() {
+        createUser();
+    }
 
     @Test
     @DisplayName("User should be able to create a new project")
@@ -15,6 +26,8 @@ public class CreateProjectTest extends BaseUiTests {
     public void userCreatesProjectTest() {
         //подготовка окружения
         step("Login as user");
+
+        LoginPage.open().login(user);
 
         //взаимодействие с UI
         step("Open 'Create Project Page' (http://localhost:8111/admin/createObjectMenu.html)");
@@ -48,5 +61,11 @@ public class CreateProjectTest extends BaseUiTests {
         step("Send get request to check that count of all extended projects didn't change");
 
         step("Check that error appears 'Project name must not be empty'");
+    }
+
+    private User createUser() {
+        var user = generate(User.class);
+        step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user));
+        return user;
     }
 }
