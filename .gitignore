@@ -1,9 +1,20 @@
 target/
+/target/
+*.log
+*.xml
+*.html
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+allure-results
+vcs.xml
+workspace.xml
+__pycache__/
+venv/
+node_modules/
 
 ### IntelliJ IDEA ###
+.idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
