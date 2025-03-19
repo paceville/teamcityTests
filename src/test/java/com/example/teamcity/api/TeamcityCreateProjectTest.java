@@ -32,6 +32,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("regression"),
             @Tag("positive")
     })
+
     public void userCreatesProjectTest() {
         var project = generate(Project.class);
         var projectId = createProject(user, project);
