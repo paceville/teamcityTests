@@ -1,3 +1,4 @@
+target
 target/
 /target/
 *.log
@@ -7,6 +8,7 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 allure-results
+allure-results/
 vcs.xml
 workspace.xml
 __pycache__/
