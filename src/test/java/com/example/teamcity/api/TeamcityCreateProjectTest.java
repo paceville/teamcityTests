@@ -30,9 +30,17 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
             @Tag("positive")
     })
     public void userCreatesProjectTest() {
-        var user = createUser();
-        var project = generate(Project.class);
-        var projectId = createProject(user, project);
+        var testdata = generate();
+
+       // var user = createUser();
+       // var project = generate(Project.class);
+       // var projectId = createProject(user, project);
+
+        var user = testdata.getUser();
+        var project = testdata.getProject();
+        var projectId = project.getId();
+
+
 
         step("check project was created successfully with correct data", () -> {
             var requester = new CheckedBase<Project>(Specifications.authSpec(user), PROJECTS);

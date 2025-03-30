@@ -1,24 +1,22 @@
 package com.example.teamcity.ui;
 
+import com.codeborne.selenide.Condition;
+import com.example.teamcity.api.models.Project;
 import com.example.teamcity.api.models.User;
-import com.example.teamcity.ui.pages.LoginPage;
-import org.junit.jupiter.api.BeforeEach;
+import com.example.teamcity.api.requests.enums.Endpoint;
+import com.example.teamcity.ui.pages.ProjectPage;
+import com.example.teamcity.ui.pages.admin.CreateProjectPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
-import static com.example.teamcity.api.requests.enums.Endpoint.USERS;
 import static io.qameta.allure.Allure.step;
 
 @Tag("regression")
 public class CreateProjectTest extends BaseUiTests {
     User user;
-
-    @BeforeEach
-    public void setup() {
-        createUser();
-    }
+    private final static String REPO_URL = "https://github.com/ALexPshe/spring-core-for-qa";
 
     @Test
     @DisplayName("User should be able to create a new project")
@@ -26,23 +24,32 @@ public class CreateProjectTest extends BaseUiTests {
     public void userCreatesProjectTest() {
         //подготовка окружения
         step("Login as user");
-
-        LoginPage.open().login(user);
+        loginAsUser(user);
 
         //взаимодействие с UI
         step("Open 'Create Project Page' (http://localhost:8111/admin/createObjectMenu.html)");
+
         step("Send all project parameters (repository URL)");
         step("Click 'Proceed'");
         step("Fix Project Name and Build Type values");
         step("Click 'Proceed'");
+        CreateProjectPage.open("_Root")
+                .createForm(REPO_URL)
+                .setupProject("projectId123", "projectName123");
+
 
         //проверка состояния API
         // проверяем корректность отправки данных с UI на API
         step("Check that all entities (project, build type) was successful created with correct data on API Level");
+        var createdProject = superUserCheckRequests.<Project>getRequest(Endpoint.PROJECTS).read("name:" + "projectName123");
+        softy.assertThat(createdProject).isNotNull();
+        System.out.println("Project created");
 
         //проверка состояния UI
         // проверяем корректность считывания данных и отображение данных на UI
         step("Check that project is visible on Projects Page (http://localhost: 8111/favorite/projects) ");
+        ProjectPage.open(createdProject.getId())
+                .title.shouldHave(Condition.exactText("projectName123"));
     }
 
     @Test
@@ -61,11 +68,5 @@ public class CreateProjectTest extends BaseUiTests {
         step("Send get request to check that count of all extended projects didn't change");
 
         step("Check that error appears 'Project name must not be empty'");
-    }
-
-    private User createUser() {
-        var user = generate(User.class);
-        step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user));
-        return user;
     }
 }

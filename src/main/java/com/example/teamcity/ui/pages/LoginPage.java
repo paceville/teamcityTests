@@ -17,11 +17,11 @@ public class LoginPage extends BasePage {
         return Selenide.open(LOGIN_URL, LoginPage.class);
     }
 
-    public ProjectsPage login(User user) {
+    public ProjectPage login(User user) {
         inputUsername.val(user.getUsername());
         inputPassword.val(user.getPassword());
         inputSubmitLogin.click();
 
-        return Selenide.page(ProjectsPage.class);
+        return Selenide.page(ProjectPage.class);
     }
 }

@@ -29,27 +29,27 @@ public class UncheckedBase extends Request implements CrudInterface {
     }
 
     @Override
-    public Response read(String id) {
+    public Response read(String locator) {
         return RestAssured
                 .given()
                 .spec(specification)
-                .get(endpoint.getUrl() + "/id:" + id);
+                .get(endpoint.getUrl() + "/" + locator);
     }
 
     @Override
-    public Response update(String id, BaseModel model) {
+    public Response update(String locator, BaseModel model) {
         return RestAssured
                 .given()
                 .body(model)
                 .spec(specification)
-                .put(endpoint.getUrl() + "/id:" + id);
+                .put(endpoint.getUrl() + "/" + locator);
     }
 
     @Override
-    public Response delete(String id) {
+    public Response delete(String locator) {
         return RestAssured
                 .given()
                 .spec(specification)
-                .delete(endpoint.getUrl() + "/id:" + id);
+                .delete(endpoint.getUrl() + "/" + locator);
     }
 }
