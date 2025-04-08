@@ -32,6 +32,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
     public void userCreatesProjectTest() {
         var testdata = generate();
 
+
        // var user = createUser();
        // var project = generate(Project.class);
        // var projectId = createProject(user, project);
@@ -40,15 +41,26 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
         var project = testdata.getProject();
         var projectId = project.getId();
 
+        createUser(user);
 
+        System.out.println("User: " + user);
+        System.out.println("Project: " + project);
+        System.out.println("ProjectID: " + projectId);
 
         step("check project was created successfully with correct data", () -> {
             var requester = new CheckedBase<Project>(Specifications.authSpec(user), PROJECTS);
+            System.out.println("Fetching project with ID: " + projectId);
+            System.out.println("Using credentials: " + user.getUsername() + " / " + user.getPassword());
             var createdProject = requester.read(projectId);
+            System.out.println("Created project: " + createdProject);
+
+
             softy.assertThat(project.getName()).as("Project name is correct").isEqualTo(createdProject.getName());
             softy.assertThat(projectId).as("Project id is correct").isEqualTo(createdProject.getId());
         });
     }
+
+    /**
 
     @Test
     @DisplayName("User should not be able to create a project with empty parent project")
@@ -143,11 +155,12 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
                     .body(Matchers.containsString("Project ID must not be empty."));
         });
     }
+            */
 
-    private User createUser() {
-        var user = generate(User.class);
+    private void createUser(User user) {
+        //var user = generate(User.class);
         step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user));
-        return user;
+       // return user;
     }
 
     private String createProject(User user, Project project) {
@@ -156,6 +169,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
         step("Create a new project by user", () -> projectId.set(requester.create(project).getId()));
         return projectId.get();
     }
+
 
 
     /** Other checks

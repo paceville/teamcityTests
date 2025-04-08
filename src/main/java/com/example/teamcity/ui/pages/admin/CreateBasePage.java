@@ -10,7 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 public abstract class CreateBasePage extends BasePage {
     protected static final String CREATE_URL = "/admin/createObjectMenu.html?projectId=%s&showMode=%s";
 
-    //@FindBy(css = "input[id='url']")
     protected SelenideElement urlInput = $("#url");
     protected SelenideElement proceedButton = $(Selectors.byAttribute("value", "Proceed"));
     protected SelenideElement buildTypeNameInput = $("#buildTypeName");

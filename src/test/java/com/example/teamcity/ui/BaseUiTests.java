@@ -18,6 +18,7 @@ import static io.qameta.allure.Allure.step;
 
 public class BaseUiTests extends BaseTest {
     static String http = "http://";
+    final static String REPO_URL = "https://github.com/ALexPshe/spring-core-for-qa";
 
     @BeforeAll
     @DisplayName("Set up browser")

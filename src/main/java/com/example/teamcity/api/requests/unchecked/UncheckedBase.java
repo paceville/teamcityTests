@@ -25,6 +25,8 @@ public class UncheckedBase extends Request implements CrudInterface {
                 .given()
                 .spec(specification)
                 .body(model)
+                .log().all()
+                .when()
                 .post(endpoint.getUrl());
     }
 

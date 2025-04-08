@@ -4,18 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="76326ec8-54cc-4d24-8846-fe73ff9abfd8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/TestData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/ProjectPage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateBasePage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateProjectPage.java" afterDir="false" />
+    <list default="true" id="76326ec8-54cc-4d24-8846-fe73ff9abfd8" name="Changes" comment="first test updates&#10;new data generator created">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/BuildType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateBuildTypePage.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/api/CreateBuildTypeApiTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/ui/CreateBuildTypeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/generators/TestDataGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/generators/TestDataGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/checked/CheckedBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/checked/CheckedBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/TestData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/models/TestData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/enums/Endpoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/enums/Endpoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/unchecked/UncheckedBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/api/requests/unchecked/UncheckedBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/BasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/BasePage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/LoginPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/ProjectsPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateBasePage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateBasePage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateProjectPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateProjectPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/teamcity/api/TeamcityCreateProjectTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/api/TeamcityCreateProjectTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/example/teamcity/ui/BaseUiTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/example/teamcity/ui/BaseUiTests.java" afterDir="false" />
@@ -78,37 +77,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;JUnit.CreateProjectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.CreateProjectTest.userCreatesProjectTest.executor&quot;: &quot;Coverage&quot;,
-    &quot;JUnit.TeamcityCreateProjectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TeamcityCreateProjectTest.userCreatesProjectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TeamcityCreateProjectTest.userCreatesProjectWithEmptyParentProjectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TeamcityCreateProjectTest.userCreatesTwoProjectsWithTheSameNameTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.TeamcityCreateProjectTests.userCreatesProjectTest.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.Whole project.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/teamcity-ui-tests&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;/Users/elena/study/test_automation/noBugs_pro/tests/noBugsTestFramework/src/test/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/elena/study/test_automation/noBugs_pro/tests/noBugsTestFramework&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Problems&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.CreateBuildTypeTest.userCreatesBuildConfigurationTest.executor": "Run",
+    "JUnit.CreateProjectTest.executor": "Run",
+    "JUnit.CreateProjectTest.userCreatesProjectTest.executor": "Run",
+    "JUnit.TeamcityCreateProjectTest.executor": "Run",
+    "JUnit.TeamcityCreateProjectTest.userCreatesProjectTest.executor": "Run",
+    "JUnit.TeamcityCreateProjectTest.userCreatesProjectWithEmptyParentProjectTest.executor": "Run",
+    "JUnit.TeamcityCreateProjectTest.userCreatesTwoProjectsWithTheSameNameTest.executor": "Run",
+    "JUnit.TeamcityCreateProjectTests.userCreatesProjectTest.executor": "Run",
+    "JUnit.Whole project.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
+    "git-widget-placeholder": "feature/teamcity-ui-tests",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "/Users/elena/study/test_automation/noBugs_pro/tests/noBugsTestFramework/src/test/java",
+    "last_opened_file_path": "/Users/elena/study/test_automation/noBugs_pro/tests/noBugsTestFramework",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources" />
@@ -117,9 +117,25 @@
       <recent name="com.example.teamcity.api" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.TeamcityCreateProjectTest.userCreatesProjectTest">
+  <component name="RunManager" selected="JUnit.CreateBuildTypeTest.userCreatesBuildConfigurationTest">
     <configuration default="true" type="Application" factoryName="Application">
       <module name="noBugsTestFramework" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreateBuildTypeTest.userCreatesBuildConfigurationTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="noBugsTestFramework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.teamcity.ui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.teamcity.ui" />
+      <option name="MAIN_CLASS_NAME" value="com.example.teamcity.ui.CreateBuildTypeTest" />
+      <option name="METHOD_NAME" value="userCreatesBuildConfigurationTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -188,22 +204,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TeamcityCreateProjectTest.userCreatesTwoProjectsWithTheSameIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="noBugsTestFramework" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.teamcity.api.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.teamcity.api" />
-      <option name="MAIN_CLASS_NAME" value="com.example.teamcity.api.TeamcityCreateProjectTest" />
-      <option name="METHOD_NAME" value="userCreatesTwoProjectsWithTheSameIdTest" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <module name="noBugsTestFramework" />
       <option name="MAIN_CLASS_NAME" value="" />
@@ -215,16 +215,16 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.TeamcityCreateProjectTest.userCreatesProjectTest" />
+        <item itemvalue="JUnit.CreateBuildTypeTest.userCreatesBuildConfigurationTest" />
         <item itemvalue="JUnit.CreateProjectTest.userCreatesProjectTest" />
+        <item itemvalue="JUnit.TeamcityCreateProjectTest.userCreatesProjectTest" />
         <item itemvalue="JUnit.CreateProjectTest" />
         <item itemvalue="JUnit.TeamcityCreateProjectTest.userCreatesProjectWithEmptyParentProjectTest" />
-        <item itemvalue="JUnit.TeamcityCreateProjectTest.userCreatesTwoProjectsWithTheSameIdTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SeleniumInternalSettingsState">
-    <option name="lastUrl" value="http://localhost:8111/admin/createObjectMenu.html?projectId=_Root&amp;showMode=createProjectMenu&amp;cameFromUrl=http%3A%2F%2Flocalhost%3A8111%2Ffavorite%2Fprojects%3Fmode%3Dbuilds#createFromUrl" />
+    <option name="lastUrl" value="http://10.1.30.4:8111/admin/createObjectMenu.html?projectId=Test1212121212&amp;showMode=createBuildTypeMenu&amp;cameFromUrl=%2Fadmin%2FeditProject.html%3FprojectId%3DTest1212121212#createManually" />
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -245,8 +245,21 @@
       <workItem from="1741117949413" duration="16637000" />
       <workItem from="1741203376521" duration="63408000" />
       <workItem from="1743338815943" duration="7796000" />
-      <workItem from="1743352078230" duration="4112000" />
+      <workItem from="1743352078230" duration="14191000" />
+      <workItem from="1743447906705" duration="26963000" />
+      <workItem from="1744110346753" duration="525000" />
+      <workItem from="1744112864402" duration="175000" />
+      <workItem from="1744113301869" duration="13604000" />
     </task>
+    <task id="LOCAL-00001" summary="first test updates&#10;new data generator created">
+      <option name="closed" value="true" />
+      <created>1743366465260</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1743366465260</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -263,16 +276,25 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="first test updates&#10;new data generator created" />
+    <option name="LAST_COMMIT_MESSAGE" value="first test updates&#10;new data generator created" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/com/example/teamcity/ui/CreateProjectTest.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="2" />
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/teamcity/ui/pages/admin/CreateBasePage.java</url>
+          <line>10</line>
+          <properties field="CREATE_URL" class="com.example.teamcity.ui.pages.admin.CreateBasePage" />
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/noBugsTestFramework$CreateProjectTest_userCreatesProjectTest.ic" NAME="CreateProjectTest.userCreatesProjectTest Coverage Results" MODIFIED="1742922381792" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
