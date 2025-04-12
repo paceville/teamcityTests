@@ -67,4 +67,4 @@ runs:
 
     - name: Set up superUserToken config property
       shell: bash
-      run: echo "host=$SUPER_USER_TOKEN" >> src/main/resources/config.properties
+      run: echo "superUserToken=$SUPER_USER_TOKEN" >> src/main/resources/config.properties
