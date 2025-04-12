@@ -16,14 +16,13 @@
         <junit-suite-engine.version>1.11.4</junit-suite-engine.version>
         <rest-assured.version>5.5.0</rest-assured.version>
         <lombok.version>1.18.36</lombok.version>
-        <allure-report.version>2.29.1</allure-report.version>
+        <allure.version>2.29.1</allure.version>
         <jackson.version>2.18.2</jackson.version>
         <slf4j.version>2.0.16</slf4j.version>
         <log4j.version>2.24.3</log4j.version>
         <slf4j-reload4j.version>2.0.17</slf4j-reload4j.version>
         <assertj.version>3.27.3</assertj.version>
         <selenide.version>7.7.3</selenide.version>
-        <allure-selenide.version>2.29.1</allure-selenide.version>
         <swagger-coverage-version>1.5.0</swagger-coverage-version>
     </properties>
 
@@ -44,12 +43,6 @@
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
             <version>${rest-assured.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-junit5</artifactId>
-            <version>${allure-report.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -111,8 +104,19 @@
         </dependency>
         <dependency>
             <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-junit5</artifactId>
+            <version>${allure.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
-            <version>${allure-selenide.version}</version>
+            <version>${allure.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-rest-assured</artifactId>
+            <version>${allure.version}</version>
         </dependency>
         <dependency>
             <groupId>com.github.viclovsky</groupId>
