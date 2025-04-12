@@ -24,8 +24,8 @@ public class CreateBuildTypeApiTest extends BaseApiTest {
     @Test
     @DisplayName("User should not be able to create two build types with the same id")
     @Tags({
-            @Tag("negative"),
-            @Tag("positive")
+            @Tag("regression"),
+            @Tag("negative")
     })
     public void userCreatesTwoBuildTypesWithTheSameIdTest() {
         var user = generate(User.class);

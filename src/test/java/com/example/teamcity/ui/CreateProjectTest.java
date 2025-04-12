@@ -10,6 +10,7 @@ import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
 import com.example.teamcity.ui.pages.admin.CreateProjectPage;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
@@ -22,7 +23,10 @@ public class CreateProjectTest extends BaseUiTests {
 
     @Test
     @DisplayName("User should be able to create a new project")
-    @Tag("positive")
+    @Tags({
+            @Tag("regression"),
+            @Tag("positive")
+    })
     public void userCreatesProjectTest() {
         loginAsUser(user);
 
@@ -42,7 +46,10 @@ public class CreateProjectTest extends BaseUiTests {
 
     @Test
     @DisplayName("User cannot create a new project with missing optional field")
-    @Tag("negative")
+    @Tags({
+            @Tag("regression"),
+            @Tag("negative")
+    })
     public void userCannotCreateProjectWithMissingOptionalFieldTest() {
         step("Login as user");
         loginAsUser(user);

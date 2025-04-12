@@ -9,10 +9,7 @@ import com.example.teamcity.api.requests.unchecked.UncheckedBase;
 import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.ui.pages.ProjectPage;
 import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
@@ -30,7 +27,10 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
     @Test
     @DisplayName("User should be able to create a new build configuration")
-    @Tag("positive")
+    @Tags({
+        @Tag("regression"),
+        @Tag("positive")
+    })
     public void userCreatesBuildConfigurationTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
@@ -62,7 +62,10 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
     @Test
     @DisplayName("User cannot create a new build configuration with missing required field")
-    @Tag("negative")
+    @Tags({
+            @Tag("regression"),
+            @Tag("negative")
+    })
     public void userCannotCreateBuildConfigurationWithMissingRequiredFieldTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
