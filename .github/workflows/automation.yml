@@ -87,3 +87,6 @@ jobs:
         if: always()
         shell: bash
         run: docker logs teamcity-server
+
+      - name: Print TeamCity internal logs
+        run: docker exec teamcity-server cat /opt/teamcity/logs/teamcity-server.log
