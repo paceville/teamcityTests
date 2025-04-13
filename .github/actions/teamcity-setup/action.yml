@@ -60,10 +60,9 @@ runs:
     - name: Run TeamCity Server (clean)
       shell: bash
       run: |
-          rm -rf tmp/teamcity_server  
-          mkdir -p tmp/teamcity_server/datadir tmp/teamcity_server/logs
-          
-          docker run -u 0 -d --name teamcity-server  \
+        mkdir -p tmp/teamcity_server/datadir tmp/teamcity_server/logs
+
+        docker run -u 0 -d --name teamcity-server  \
           -v $(pwd)/tmp/teamcity_server/datadir:/data/teamcity_server/datadir \
           -v $(pwd)/tmp/teamcity_server/logs:/opt/teamcity/logs  \
           -p 8111:8111 \
