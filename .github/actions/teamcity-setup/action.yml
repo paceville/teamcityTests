@@ -25,4 +25,6 @@ runs:
     - name: Pull Selenoid browsers
       shell: bash
       run: |
-        for browser in $(awk -F'"' '/"image": "/
+        for browser in $(awk -F'"' '/"image": "/{print $4}' "config/browsers.json"); do
+          docker pull $browser
+        done
