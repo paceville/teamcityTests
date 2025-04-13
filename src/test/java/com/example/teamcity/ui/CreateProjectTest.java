@@ -20,7 +20,7 @@ import static io.qameta.allure.Allure.step;
 public class CreateProjectTest extends BaseUiTests {
     User user;
     TestData testdata = generate();
-
+/*
     //@Test
     @DisplayName("User should be able to create a new project")
     @Tags({
@@ -93,5 +93,7 @@ public class CreateProjectTest extends BaseUiTests {
 
         softy.assertThat(createdProject).isNotNull();
     }
+
+ */
 
 }
