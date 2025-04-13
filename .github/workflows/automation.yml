@@ -75,3 +75,8 @@ jobs:
           publish_branch: gh-pages
           publish_dir: allure-history
           force_orphan: true
+
+      - name: Print TeamCity logs
+        if: failure()
+        shell: bash
+        run: docker logs teamcity-server || true
