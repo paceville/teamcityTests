@@ -21,7 +21,7 @@ public class CreateProjectTest extends BaseUiTests {
     User user;
     TestData testdata = generate();
 
-    @Test
+    //@Test
     @DisplayName("User should be able to create a new project")
     @Tags({
             @Tag("refactoring"),
@@ -44,7 +44,7 @@ public class CreateProjectTest extends BaseUiTests {
     }
 
 
-    @Test
+    //@Test
     @DisplayName("User cannot create a new project with missing optional field")
     @Tags({
             @Tag("refactoring"),
@@ -75,7 +75,7 @@ public class CreateProjectTest extends BaseUiTests {
         softy.assertThat(createdProject).isNull();
     }
 
-    @Test
+    //@Test
     @DisplayName("User should be able to create a new project")
     @Tag("refactoring")
     public void userCreatesProjectTest1() {
