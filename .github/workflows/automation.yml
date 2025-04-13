@@ -32,6 +32,10 @@ jobs:
       - name: Teamcity Setup
         uses: ./.github/actions/teamcity-setup
 
+      - name: List Docker containers
+        shell: bash
+        run: docker ps -a
+
       - name: Run tests
         continue-on-error: true
         run: ./mvnw test -Dtest='com.example.teamcity.${{inputs.package}}.**' -DincludeTags=regression
@@ -77,6 +81,6 @@ jobs:
           force_orphan: true
 
       - name: Print TeamCity logs
-        if: failure()
+        if: always()
         shell: bash
         run: docker logs teamcity-server || true
