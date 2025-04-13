@@ -28,3 +28,8 @@ runs:
         for browser in $(awk -F'"' '/"image": "/{print $4}' "config/browsers.json"); do
           docker pull $browser
         done
+
+    - name: Start Selenoid
+      shell: bash
+      run: |
+        docker-compose -f .github/selenoid/docker-compose.yml up -d
