@@ -25,6 +25,7 @@ public class FirstStartPage extends BasePage {
         return Selenide.open("/", FirstStartPage.class);
     }
 
+    @Step("First teamcity setup")
     public FirstStartPage setUpFirstStep() {
         proceedButton.shouldBe(Condition.clickable).click();
         dbTypeSelect.shouldBe(Condition.visible, LONG_WAITING);
