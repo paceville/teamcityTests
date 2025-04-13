@@ -51,6 +51,14 @@ runs:
         aerokube/selenoid-ui:latest-release \
         --selenoid-uri http://$HOST:4444
 
+    - name: Clean TeamCity data and logs
+      shell: bash
+      run: |
+        rm -rf $(pwd)/tmp/teamcity_server/datadir
+        rm -rf $(pwd)/tmp/teamcity_server/logs
+        mkdir -p $(pwd)/tmp/teamcity_server/datadir
+        mkdir -p $(pwd)/tmp/teamcity_server/logs
+
     - name: Run TeamCity Server
       shell: bash
       # Флаг -u 0 запускает контейнер от имени root, чтобы был доступ к записи файлов в директории, которые указаны в volume.
