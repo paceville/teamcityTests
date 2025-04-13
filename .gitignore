@@ -1,38 +1,36 @@
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
-
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
+# IntelliJ IDEA
+.idea/
 *.iml
+*.iws
 *.ipr
 
-### Eclipse ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
+# Mac
+.DS_Store
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
+# VSCode
 .vscode/
 
-### Mac OS ###
-.DS_Store
+# Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/
+
+# Gradle (если появится)
+.gradle/
+build/
+
+# Logs
+*.log
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional: исключить весь workspace.xml (он персональный и не нужен в git)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/misc.xml
