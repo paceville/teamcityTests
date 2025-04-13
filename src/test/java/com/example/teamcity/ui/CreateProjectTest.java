@@ -16,7 +16,7 @@ import org.junit.jupiter.api.Test;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static io.qameta.allure.Allure.step;
 
-@Tag("regression")
+@Tag("refactoring")
 public class CreateProjectTest extends BaseUiTests {
     User user;
     TestData testdata = generate();
@@ -24,7 +24,7 @@ public class CreateProjectTest extends BaseUiTests {
     @Test
     @DisplayName("User should be able to create a new project")
     @Tags({
-            @Tag("regression"),
+            @Tag("refactoring"),
             @Tag("positive")
     })
     public void userCreatesProjectTest() {
@@ -47,7 +47,7 @@ public class CreateProjectTest extends BaseUiTests {
     @Test
     @DisplayName("User cannot create a new project with missing optional field")
     @Tags({
-            @Tag("regression"),
+            @Tag("refactoring"),
             @Tag("negative")
     })
     public void userCannotCreateProjectWithMissingOptionalFieldTest() {
@@ -77,7 +77,7 @@ public class CreateProjectTest extends BaseUiTests {
 
     @Test
     @DisplayName("User should be able to create a new project")
-    @Tag("positive")
+    @Tag("refactoring")
     public void userCreatesProjectTest1() {
         loginAsUser(user);
 
