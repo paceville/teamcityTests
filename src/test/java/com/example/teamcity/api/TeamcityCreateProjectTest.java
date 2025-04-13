@@ -32,16 +32,16 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
     public void userCreatesProjectTest() {
         var testdata = generate();
 
-
-       // var user = createUser();
-       // var project = generate(Project.class);
-       // var projectId = createProject(user, project);
-
-        var user = testdata.getUser();
-        var project = testdata.getProject();
-        var projectId = project.getId();
-
+        User user = testdata.getUser();
         createUser(user);
+        var project = generate(Project.class);
+        var projectId = createProject(user, project);
+
+        //var user = testdata.getUser();
+        //var project = testdata.getProject();
+        //var projectId = project.getId();
+
+        //createUser(user);
 
         System.out.println("User: " + user);
         System.out.println("Project: " + project);
