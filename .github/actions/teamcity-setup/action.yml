@@ -51,6 +51,11 @@ runs:
         aerokube/selenoid-ui:latest-release \
         --selenoid-uri http://$HOST:4444
 
+    - name: Remove existing TeamCity container (if any)
+      shell: bash
+      run: |
+        docker rm -f teamcity-server || true
+
     - name: Clean TeamCity data and logs
       shell: bash
       run: |
@@ -58,11 +63,18 @@ runs:
         rm -rf $(pwd)/tmp/teamcity_server/logs
         mkdir -p $(pwd)/tmp/teamcity_server/datadir
         mkdir -p $(pwd)/tmp/teamcity_server/logs
-
-    - name: Remove existing TeamCity container (if any)
+        
+    - name: Wait for TeamCity to be ready
       shell: bash
       run: |
-        docker rm -f teamcity-server || true
+        for i in {1..60}; do
+          if curl -s http://localhost:8111 | grep -q 'TeamCity'; then
+            echo "TeamCity is up!"
+            break
+          fi
+          echo "Waiting for TeamCity..."
+          sleep 5
+        done
 
     - name: Run TeamCity Server
       shell: bash
