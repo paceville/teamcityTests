@@ -80,7 +80,10 @@ jobs:
           publish_dir: allure-history
           force_orphan: true
 
+      - name: Wait before printing logs
+        run: sleep 30
+
       - name: Print TeamCity logs
         if: always()
         shell: bash
-        run: docker logs teamcity-server || true
+        run: docker logs teamcity-server
