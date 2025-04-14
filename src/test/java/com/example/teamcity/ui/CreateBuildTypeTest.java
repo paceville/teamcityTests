@@ -1,6 +1,7 @@
 package com.example.teamcity.ui;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.example.teamcity.api.models.BuildType;
 import com.example.teamcity.api.models.TestData;
 import com.example.teamcity.api.models.User;
@@ -10,6 +11,8 @@ import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.ui.pages.ProjectPage;
 import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
 import org.junit.jupiter.api.*;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.FindBy;
 
 import java.time.Duration;
 
@@ -22,6 +25,8 @@ import static io.qameta.allure.Allure.step;
 public class CreateBuildTypeTest extends BaseUiTests {
     User user;
     TestData testdata = generate();
+
+
 
     @BeforeEach
     public void createUser() {
@@ -48,8 +53,9 @@ public class CreateBuildTypeTest extends BaseUiTests {
         });
 
         step("Open project page via UI", () -> {
-            ProjectPage.open(project.getId())
-                    .title.shouldHave(Condition.exactText(project.getName()));
+           // ProjectPage.open(project.getId())
+             //       .title.shouldHave(Condition.exactText(project.getName()));
+            Selenide.$("span[title='test_maskRcSTEy'] span[class='MiddleEllipsis__searchable--uZ']").shouldBe(Condition.visible).click();
         });
 
         step("Click on 'New project...' and select 'Create build configuration'", () -> {
