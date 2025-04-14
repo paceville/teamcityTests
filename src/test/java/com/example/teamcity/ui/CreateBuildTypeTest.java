@@ -22,6 +22,7 @@ import static com.codeborne.selenide.Selenide.$$;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
+import static org.assertj.core.api.Fail.fail;
 
 public class CreateBuildTypeTest extends BaseUiTests {
     User user;
@@ -123,6 +124,12 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
         step("Check that build type is null");
         softy.assertThat(response.asString()).isEmpty(); // Проверяем, что ответ пустой
+    }
+
+    @Test
+    @Tag("Setup")
+    void willFailIfIncludedAccidentally() {
+        fail("This test should be excluded");
     }
 
 }
