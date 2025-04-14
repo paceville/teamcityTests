@@ -24,12 +24,19 @@
         <assertj.version>3.27.3</assertj.version>
         <selenide.version>7.7.3</selenide.version>
         <swagger-coverage-version>1.5.0</swagger-coverage-version>
+
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
@@ -160,12 +167,6 @@
                 <version>3.2.5</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
-                    <properties>
-                        <configurationParameters>
-                            junit.jupiter.tags.include=regression
-                            junit.jupiter.tags.exclude=Setup
-                        </configurationParameters>
-                    </properties>
                 </configuration>
             </plugin>
         </plugins>
