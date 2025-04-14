@@ -55,7 +55,8 @@ public class CreateBuildTypeTest extends BaseUiTests {
         step("Open project page via UI", () -> {
            // ProjectPage.open(project.getId())
              //       .title.shouldHave(Condition.exactText(project.getName()));
-            Selenide.$("span[title='test_maskRcSTEy'] span[class='MiddleEllipsis__searchable--uZ']").shouldBe(Condition.visible).click();
+            var projectname = project.getName();
+            Selenide.$("span[title=projectname] span[class='MiddleEllipsis__searchable--uZ']").shouldBe(Condition.visible, Duration.ofSeconds(300)).click();
         });
 
         step("Click on 'New project...' and select 'Create build configuration'", () -> {
