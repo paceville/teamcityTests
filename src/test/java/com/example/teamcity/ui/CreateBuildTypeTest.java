@@ -11,12 +11,7 @@ import com.example.teamcity.api.spec.Specifications;
 import com.example.teamcity.ui.pages.ProjectPage;
 import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
 import org.junit.jupiter.api.*;
-import org.openqa.selenium.By;
-import org.openqa.selenium.support.FindBy;
-
 import java.time.Duration;
-
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
@@ -28,20 +23,18 @@ public class CreateBuildTypeTest extends BaseUiTests {
     User user;
     TestData testdata = generate();
 
-
-
     @BeforeEach
     public void createUser() {
         user = generate(User.class); // Сначала генерируем объект User
         step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user)); // Затем создаём его через API
     }
 
-    @Test
-    @DisplayName("User should be able to create a new build configuration via UI clicks")
     @Tags({
             @Tag("regression"),
             @Tag("positive")
     })
+    @Test
+    @DisplayName("User should be able to create a new build configuration via UI clicks")
     public void userCreatesBuildConfigurationViaUiTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
@@ -90,12 +83,12 @@ public class CreateBuildTypeTest extends BaseUiTests {
         afterTest();
     }
 
-    @Test
-    @DisplayName("User cannot create a new build configuration with missing required field")
     @Tags({
             @Tag("regression"),
             @Tag("negative")
     })
+    @Test
+    @DisplayName("User cannot create a new build configuration with missing required field")
     public void userCannotCreateBuildConfigurationWithMissingRequiredFieldTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
@@ -124,12 +117,6 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
         step("Check that build type is null");
         softy.assertThat(response.asString()).isEmpty(); // Проверяем, что ответ пустой
-    }
-
-    @Test
-    @Tag("Setup")
-    void willFailIfIncludedAccidentally() {
-        fail("This test should be excluded");
     }
 
 }
