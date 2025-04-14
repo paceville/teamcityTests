@@ -19,8 +19,6 @@ import static com.example.teamcity.api.requests.enums.Endpoint.*;
 
 public class CreateBuildTypeApiTest extends BaseApiTest {
 
-
-
     @Test
     @DisplayName("User should not be able to create two build types with the same id")
     @Tags({
