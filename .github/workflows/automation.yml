@@ -29,22 +29,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Teamcity Setup
+      - name: TeamCity Setup
         uses: ./.github/actions/teamcity-setup
-
-      - name: List Docker containers
-        shell: bash
-        run: docker ps -a
 
       - name: Run tests
         continue-on-error: true
-        run: ./mvnw test -Dtest='com.example.teamcity.${{inputs.package}}.**' -DincludeTags=regression
-
+        # Указываем группу, чтобы не запустить тесты, связанные с сетапом TeamCity
+        run: ./mvnw test -Dtest='com.example.teamcity.${{ inputs.package }}.**' -DincludeTags=regression
+          
+          # Создаем репорт с покрытием API тестов, основанном на Swagger.
+          # Документация: https://github.com/viclovsky/swagger-coverage
+          # Обязательно добавить фильтр SwaggerCoverageRestAssured в RestAssured
       - name: Run Swagger Coverage
         continue-on-error: true
         if: ${{ inputs.package == 'api' }}
         run: .swagger-coverage-commandline/bin/swagger-coverage-commandline -s http://$HOST:8111/app/rest/swagger.json -i target/swagger-coverage-output
 
+        # Сохраняем Swagger Report в артефакты GitHub Actions
       - name: Save Swagger Coverage
         uses: actions/upload-artifact@v4
         if: ${{ inputs.package == 'api' }}
@@ -54,6 +55,7 @@ jobs:
             swagger-coverage-report.html
             swagger-coverage-results.json
 
+        # Загружаем историю Allure Report с специальной ветки gh-pages (https://allurereport.org/docs/integrations-github/)
       - name: Load test report history
         uses: actions/checkout@v2
         if: always()
@@ -71,6 +73,7 @@ jobs:
           allure_results: target/allure-results
           subfolder: ${{ inputs.package }}
 
+        # Создаем пустую ветку gh-pages на основе инструкции https://gist.github.com/ramnathv/2227408
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v3
         if: always()
@@ -78,15 +81,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: allure-history
-          force_orphan: true
-
-      - name: Wait before printing logs
-        run: sleep 30
-
-      - name: Print TeamCity logs
-        if: always()
-        shell: bash
-        run: docker logs teamcity-server
-
-      - name: Print TeamCity internal logs
-        run: docker exec teamcity-server cat /opt/teamcity/logs/teamcity-server.log

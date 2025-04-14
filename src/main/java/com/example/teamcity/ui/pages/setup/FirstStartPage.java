@@ -1,10 +1,9 @@
-package com.example.teamcity.ui.pages.setup;
+package com.example.teamcity.ui.setup;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.example.teamcity.ui.pages.BasePage;
-import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -15,33 +14,20 @@ public class FirstStartPage extends BasePage {
     private final SelenideElement acceptLicenseCheckbox = $("#accept");
     private final SelenideElement submitButton = $("input[type='submit']");
 
-
     public FirstStartPage() {
         restoreButton.shouldBe(Condition.visible, LONG_WAITING);
     }
 
-    @Step("Open first start page")
     public static FirstStartPage open() {
-        var page = Selenide.open("/", FirstStartPage.class);
-
-        if ($("#loginButton").exists()) {
-            throw new IllegalStateException("TeamCity already initialized, login screen shown.");
-        }
-
-        if (!$("#restoreButton").exists()) {
-            throw new IllegalStateException("First start page not shown. Possibly setup already completed.");
-        }
-
-        return page;
+        return Selenide.open("/", FirstStartPage.class);
     }
 
-    @Step("First teamcity setup")
-    public FirstStartPage setUpFirstStep() {
-        proceedButton.shouldBe(Condition.clickable).click();
+    public FirstStartPage setupFirstStart() {
+        proceedButton.click();
         dbTypeSelect.shouldBe(Condition.visible, LONG_WAITING);
-        proceedButton.shouldBe(Condition.clickable).click();
+        proceedButton.click();
         acceptLicenseCheckbox.should(Condition.exist, LONG_WAITING).scrollTo().click();
-        submitButton.shouldBe(Condition.visible).click();
+        submitButton.click();
         return this;
     }
 }
