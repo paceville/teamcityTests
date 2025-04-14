@@ -9,8 +9,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.Selenide.*;
 
 public class CreateBuildTypePage extends CreateBasePage {
     private static final String BUILD_TYPE_SHOW_MODE = "createBuildTypeMenu";
@@ -21,6 +20,9 @@ public class CreateBuildTypePage extends CreateBasePage {
     private SelenideElement divUnprocessedObjectsCreated = $("div[id$='objectsCreated']");
     private SelenideElement errorMessage = $("#error_url");
     private SelenideElement errorBuildTypeName = $("#error_buildTypeName");
+    private SelenideElement jumpButton = $("button[aria-label^='Jump']");
+    private SelenideElement newBuildConfiguration = $$(("a.ring-link-link")).findBy(Condition.text("New build configuration"));
+
 
     public static CreateBuildTypePage open(String projectId) {
         return Selenide.open(CREATE_URL.formatted(projectId, BUILD_TYPE_SHOW_MODE), CreateBuildTypePage.class);
@@ -76,6 +78,17 @@ public class CreateBuildTypePage extends CreateBasePage {
     public void verifyErrorMessage() {
         errorBuildTypeName.shouldBe(Condition.visible);
         errorBuildTypeName.shouldHave(Condition.text(NAME_MUST_NOT_BE_EMPTY));
+    }
+
+    public void openProjectViaUi(String projectName) {
+        Selenide.$(String.format("span[title='%s'] span.MiddleEllipsis__searchable--uZ", projectName))
+                .shouldBe(Condition.visible, Duration.ofSeconds(10))
+                .click();
+    }
+
+    public void openNewBuildConfiguration() {
+        jumpButton.shouldBe(Condition.visible).click();
+        newBuildConfiguration.shouldBe(Condition.visible).click();
     }
 
 }

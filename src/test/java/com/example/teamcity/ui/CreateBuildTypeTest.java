@@ -12,21 +12,19 @@ import com.example.teamcity.ui.pages.ProjectPage;
 import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
 import org.junit.jupiter.api.*;
 import java.time.Duration;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
-import static org.assertj.core.api.Fail.fail;
 
 public class CreateBuildTypeTest extends BaseUiTests {
+    CreateBuildTypePage createBuildTypePage;
     User user;
     TestData testdata = generate();
 
     @BeforeEach
     public void createUser() {
-        user = generate(User.class); // Сначала генерируем объект User
-        step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user)); // Затем создаём его через API
+        user = generate(User.class);
+        step("Create user", () -> superUserCheckRequests.getRequest(USERS).create(user));
     }
 
     @Tags({
@@ -48,17 +46,11 @@ public class CreateBuildTypeTest extends BaseUiTests {
         });
 
         step("Open project page via UI", () -> {
-            String projectName = project.getName();
-
-            Selenide.$(String.format("span[title='%s'] span.MiddleEllipsis__searchable--uZ", projectName))
-                    .shouldBe(Condition.visible, Duration.ofSeconds(10))
-                    .click();
+            createBuildTypePage.openProjectViaUi(project.getName());
         });
 
         step("Open new build configuration'", () -> {
-            $("button[aria-label^='Jump']").shouldBe(Condition.visible).click();
-            $$(("a.ring-link-link")).findBy(Condition.text("New build configuration")).shouldBe(Condition.visible).click();
-
+            createBuildTypePage.openNewBuildConfiguration();
         });
 
         step("Fill out form with repository URL", () -> {
