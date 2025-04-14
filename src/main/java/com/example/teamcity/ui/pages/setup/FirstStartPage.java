@@ -22,7 +22,11 @@ public class FirstStartPage extends BasePage {
 
     @Step("Open first start page")
     public static FirstStartPage open() {
-        return Selenide.open("/", FirstStartPage.class);
+        var page = Selenide.open("/", FirstStartPage.class);
+        if ($("#loginButton").exists()) {
+            throw new IllegalStateException("TeamCity already initialized, login screen shown.");
+        }
+        return page;
     }
 
     @Step("First teamcity setup")
