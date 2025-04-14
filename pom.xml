@@ -25,6 +25,9 @@
         <selenide.version>7.7.3</selenide.version>
         <swagger-coverage-version>1.5.0</swagger-coverage-version>
 
+        <junit.jupiter.tags.include></junit.jupiter.tags.include>
+        <junit.jupiter.tags.exclude></junit.jupiter.tags.exclude>
+
     </properties>
 
     <dependencies>
@@ -167,6 +170,10 @@
                 <version>3.2.5</version>
                 <configuration>
                     <useModulePath>false</useModulePath>
+                    <properties>
+                        <includeTags>${junit.jupiter.tags.include}</includeTags>
+                        <excludeTags>${junit.jupiter.tags.exclude}</excludeTags>
+                    </properties>
                 </configuration>
             </plugin>
         </plugins>
