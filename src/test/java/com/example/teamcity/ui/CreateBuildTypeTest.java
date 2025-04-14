@@ -53,19 +53,16 @@ public class CreateBuildTypeTest extends BaseUiTests {
         });
 
         step("Open project page via UI", () -> {
-           // ProjectPage.open(project.getId())
-             //       .title.shouldHave(Condition.exactText(project.getName()));
             String projectName = project.getName();
 
             Selenide.$(String.format("span[title='%s'] span.MiddleEllipsis__searchable--uZ", projectName))
                     .shouldBe(Condition.visible, Duration.ofSeconds(10))
                     .click();
-
         });
 
-        step("Click on 'New project...' and select 'Create build configuration'", () -> {
-            $("button[title='New project...']").click(); // или $("button").find(Condition.text("New project...")).click();
-            $(byText("Create build configuration")).click();
+        step("Open new build configuration'", () -> {
+            $("button[aria-label^='Jump']").shouldBe(Condition.visible).click();
+            $(By.xpath("html > body > div:nth-of-type(9) > div > div > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div > a > span")).shouldBe(Condition.visible).click();
         });
 
         step("Fill out form with repository URL", () -> {
