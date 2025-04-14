@@ -62,7 +62,7 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
         step("Open new build configuration'", () -> {
             $("button[aria-label^='Jump']").shouldBe(Condition.visible).click();
-            $(By.xpath("html > body > div:nth-of-type(9) > div > div > div:nth-of-type(2) > div > div > div:nth-of-type(2) > div > a > span")).shouldBe(Condition.visible).click();
+            $(byText("New build configuration")).click();
         });
 
         step("Fill out form with repository URL", () -> {
