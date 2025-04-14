@@ -31,6 +31,20 @@ public class CreateBuildTypePage extends CreateBasePage {
         return this;
     }
 
+    public static CreateBuildTypePage openWithRetry(String projectId, int retries, Duration waitBetween) {
+        for (int i = 0; i < retries; i++) {
+            CreateBuildTypePage page = Selenide.open(CREATE_URL.formatted(projectId, BUILD_TYPE_SHOW_MODE), CreateBuildTypePage.class);
+            try {
+                $("#url").shouldBe(Condition.visible, Duration.ofSeconds(5));
+                return page;
+            } catch (Throwable e) {
+                System.out.println("Retry " + (i + 1) + ": Page not ready yet");
+                Selenide.sleep(waitBetween.toMillis());
+            }
+        }
+        throw new IllegalStateException("Create Build page didn't load after retries");
+    }
+
     public ProjectPage setupBuildType(String buildTypeName) {
         buildTypeNameInput.val(buildTypeName);
         proceedButton.click();

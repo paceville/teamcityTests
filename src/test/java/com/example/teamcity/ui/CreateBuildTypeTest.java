@@ -11,6 +11,8 @@ import com.example.teamcity.ui.pages.ProjectPage;
 import com.example.teamcity.ui.pages.admin.CreateBuildTypePage;
 import org.junit.jupiter.api.*;
 
+import java.time.Duration;
+
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
@@ -77,7 +79,7 @@ public class CreateBuildTypeTest extends BaseUiTests {
         loginAsUser(user);
 
         step("Open 'Create Build Configuration Page'");
-        CreateBuildTypePage page = CreateBuildTypePage.open(project.getId())
+        CreateBuildTypePage page = CreateBuildTypePage.openWithRetry(project.getId(), 5, Duration.ofSeconds(3))
                 .createForm(REPO_URL);
 
         page.setupBuildTypeNegative("");
