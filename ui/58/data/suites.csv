@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Apr 14 21:22:35 GMT 2025","Mon Apr 14 21:23:33 GMT 2025","57881","","com.example.teamcity.ui.CreateBuildTypeTest","","com.example.teamcity.ui.CreateBuildTypeTest","userCannotCreateBuildConfigurationWithMissingRequiredFieldTest","User cannot create a new build configuration with missing required field",""
+"passed","Mon Apr 14 21:23:33 GMT 2025","Mon Apr 14 21:23:52 GMT 2025","19470","","com.example.teamcity.ui.CreateBuildTypeTest","","com.example.teamcity.ui.CreateBuildTypeTest","userCreatesBuildConfigurationViaUiTest","User should be able to create a new build configuration via UI clicks",""
+"broken","Mon Apr 14 21:23:52 GMT 2025","Mon Apr 14 21:26:56 GMT 2025","183071","","com.example.teamcity.ui.SetupServerTest","","com.example.teamcity.ui.SetupServerTest","setupTeamCityServerTest","setupTeamCityServerTest()",""
