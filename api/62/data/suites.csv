@@ -1,0 +1,4 @@
+"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
+"passed","Mon Apr 14 22:28:46 GMT 2025","Mon Apr 14 22:28:47 GMT 2025","1245","","com.example.teamcity.api.CreateBuildTypeApiTest","","com.example.teamcity.api.CreateBuildTypeApiTest","userCreatesTwoBuildTypesWithTheSameIdTest","User should not be able to create two build types with the same id",""
+"passed","Mon Apr 14 22:27:35 GMT 2025","Mon Apr 14 22:28:25 GMT 2025","50189","","com.example.teamcity.ui.SetupServerTest","","com.example.teamcity.ui.SetupServerTest","setupTeamCityServerTest","setupTeamCityServerTest()",""
+"passed","Mon Apr 14 22:28:40 GMT 2025","Mon Apr 14 22:28:45 GMT 2025","5520","","com.example.teamcity.api.TeamcityCreateProjectTest","","com.example.teamcity.api.TeamcityCreateProjectTest","userCreatesProjectTest","User should be able to create a new project",""
