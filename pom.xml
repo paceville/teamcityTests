@@ -159,8 +159,12 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.5</version>
                 <configuration>
+                    <useModulePath>false</useModulePath>
                     <properties>
-                        <includeTags>regression</includeTags>
+                        <configurationParameters>
+                            junit.jupiter.tags.include=regression
+                            junit.jupiter.tags.exclude=Setup
+                        </configurationParameters>
                     </properties>
                 </configuration>
             </plugin>
