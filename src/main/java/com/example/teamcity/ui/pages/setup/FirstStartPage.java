@@ -24,15 +24,12 @@ public class FirstStartPage extends BasePage {
     public static FirstStartPage open() {
         var page = Selenide.open("/", FirstStartPage.class);
 
-        // если уже login — значит setup был, можно дальше идти обычными тестами
         if ($("#loginButton").exists()) {
-            System.out.println("TeamCity уже инициализирован — пропускаем setup.");
-            return null; // или можно возвращать Optional.empty()
+            throw new IllegalStateException("TeamCity already initialized, login screen shown.");
         }
 
-        // иначе — setup страница
         if (!$("#restoreButton").exists()) {
-            throw new IllegalStateException("Ни логина, ни restoreButton — непонятное состояние.");
+            throw new IllegalStateException("First start page not shown. Possibly setup already completed.");
         }
 
         return page;
