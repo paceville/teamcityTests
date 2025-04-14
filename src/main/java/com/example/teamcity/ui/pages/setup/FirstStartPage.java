@@ -39,7 +39,7 @@ public class FirstStartPage extends BasePage {
     }
 
     @Step("First teamcity setup")
-    public static FirstStartPage setUpFirstStep() {
+    public FirstStartPage setUpFirstStep() {
         proceedButton.shouldBe(Condition.clickable).click();
         dbTypeSelect.shouldBe(Condition.visible, LONG_WAITING);
         proceedButton.shouldBe(Condition.clickable).click();

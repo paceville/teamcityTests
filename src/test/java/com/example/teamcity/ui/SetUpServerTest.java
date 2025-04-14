@@ -17,6 +17,6 @@ public class SetUpServerTest extends BaseUiTests {
         }
 
         // тут твой код для setup
-        FirstStartPage.setUpFirstStep();
+        firstStartPage.setUpFirstStep();
     }
 }
