@@ -22,7 +22,7 @@ runs:
 
     - name: Set up host config property
       shell: bash
-      run: echo "host=$HOST:8111" >> src/main/resources/config.properties
+      run: echo "host=$HOST" >> src/main/resources/config.properties
 
     - name: Pull Selenoid browsers
       shell: bash
