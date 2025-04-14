@@ -1,0 +1,186 @@
+<html class=" ua-js"><head>
+
+  <title>TeamCity First Start — TeamCity</title>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="application-name" content="TeamCity">
+  <meta name="description" content="Powerful Continuous Integration and Build Server">
+  <link href="/css/FontAwesome/css/font-awesome.min.css" type="text/css" rel="stylesheet">
+  <link href="/css/main.css?v147412" type="text/css" rel="stylesheet">
+  <link href="/css/icons.css?v147412" type="text/css" rel="stylesheet">
+  <link href="/css/maintenance-initialPages-common.css?v147412" type="text/css" rel="stylesheet">
+  <link href="/maintenance/maintenance.css?v147412" type="text/css" rel="stylesheet">
+
+  <script type="text/javascript" src="/js/bs/ua.js"></script>
+  <script type="text/javascript" src="/js/ring/jquery.js"></script>
+  <script type="text/javascript" src="/js/ring/jquery-migrate.min.js"></script>
+  <script type="text/javascript" src="/js/jquery/jquery.z-index.js"></script>
+  <script type="text/javascript" src="/maintenance/maintenance.js"></script>
+  <script type="text/javascript" src="/js/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/bs/bs-clipboard.js"></script>
+    <link href="/css/react-ui.css" type="text/css" rel="stylesheet">
+    <link href="/js/ring/loaderInline.css" type="text/css" rel="stylesheet">
+    <script type="text/javascript" src="/js/ring/loaderInline.js"></script>
+
+    <script>
+      (function() {
+        const Theme = {
+          AUTO: 'auto',
+          DARK: 'dark',
+          LIGHT: 'light',
+        };
+
+        const darkClass = 'ring-ui-theme-dark';
+        const setTheme = (theme) => document.documentElement.classList.toggle(darkClass, theme === Theme.DARK);
+
+        const setGlobalTheme = (theme = Theme.AUTO) => {
+          if (theme === Theme.AUTO) {
+            const darkMatcher = window.matchMedia('(prefers-color-scheme: dark)');
+            const handler = () => setTheme(darkMatcher.matches ? Theme.DARK : Theme.LIGHT);
+            handler();
+            darkMatcher.addEventListener('change', handler);
+          } else {
+            setTheme(theme);
+          }
+        };
+
+        setGlobalTheme();
+      })();
+      (() => {
+        localStorage.clear();
+        caches
+          .keys()
+          .then(cacheNames => Promise.all(cacheNames.map(cacheName => caches.delete(cacheName))))
+      })()
+    </script>
+
+  <script type="text/javascript">
+    BS.Maintenance.webPrefix = "";
+    BS.Maintenance.stateRevision = 11;
+    BS.Maintenance.activeStage = false;
+  </script>
+
+</head>
+
+
+<body>
+
+
+  <div id="startScreen">
+
+    <div class="page-content-wrapper">
+      <div id="pageContent">
+        <span class="logo"></span>
+        <h1>TeamCity First Start</h1>
+
+
+      <noscript>
+        <div class="nojs-message">
+          Please enable JavaScript in your browser to access TeamCity.
+        </div>
+      </noscript>
+
+      <!-- THE PAGE CONTENT BEGIN -->
+        <div id="nestedPageContent">
+
+  <p>Please review the settings below before proceeding with the first TeamCity start.</p>
+
+  <p>
+    TeamCity server stores server configuration settings, project definitions, build results and caches on disk in a <b>Data Directory</b>.<a class="helpIcon" target="_blank" rel="noreferrer" href="https://www.jetbrains.com/help/teamcity/?TeamCity+Data+Directory" title="View Help" showdiscardchangesmessage="false"><i class="icon icon16 tc-icon_help_small"></i></a>
+  </p>
+
+    <p>
+        Location of the Data Directory: <b><span class="mono mono-12px">/data/teamcity_server/datadir</span></b>
+    </p>
+    <p>
+        If you have already worked with TeamCity and want to use an existing directory or you want to use another location for creating fresh setup, check the
+      <a class="helpIcon" target="_blank" rel="noreferrer" href="https://www.jetbrains.com/help/teamcity/?TeamCity+Data+Directory#TeamCityDataDirectory-ConfiguringtheLocation" title="View Help" showdiscardchangesmessage="false">documentation</a> to change the directory location.
+    </p>
+
+<div class="hidden">
+<div>
+  <h3>Installed TeamCity Software</h3>
+  <div class="info-section">
+    <p>Version: 2023.11.1 (build 147412)</p>
+    <p>Required data format version: <strong>1003</strong></p>
+  </div>
+
+  <h3>Data directory</h3>
+  <div class="info-section">
+      <p>Path: <strong><span class="mono mono-12px">/data/teamcity_server/datadir</span></strong></p>
+      <p>Data format version: <strong>0</strong></p>
+  </div>
+
+  <h3>Database</h3>
+  <div class="info-section">
+    <p>Data format version: <strong>unknown</strong></p>
+  </div>
+</div>
+</div>
+
+<div class="action-block">
+  <input type="submit" id="restoreButton" class="btn btn_enable_on_load" onclick="BS.Maintenance.FirstStart.submit(true);" value="Restore from backup">
+  <input type="submit" id="proceedButton" class="btn btn_primary btn_enable_on_load" onclick="BS.Maintenance.FirstStart.submit(false);" value="Proceed">
+</div>
+
+</div>
+
+      <!-- THE PAGE CONTENT END -->
+
+      <div id="footer2">
+        TeamCity 2023.11.1 (build 147412)
+      </div>
+    </div>
+  </div>
+
+  </div>
+
+  <script type="text/javascript">
+    BS.Maintenance.scheduleCheckAndRefresh();
+
+    $(document).ready(function() {
+      $('.btn_enable_on_load').prop('disabled', false)
+    });
+  </script>
+
+
+
+
+<script type="text/javascript">
+    BS.Maintenance.FirstStart = {
+
+        getInputField: function() {
+          return $("#data-directory-location");
+        },
+
+        submit: function(retoreFlag) {
+            var dataDirInput = BS.Maintenance.FirstStart.getInputField();
+            if (dataDirInput && dataDirInput.val()) {
+                BS.Maintenance.postCommandAndRefresh('goNewInstallation', {dataDirPath: dataDirInput.val(), restore: retoreFlag});
+            } else {
+                BS.Maintenance.postCommandAndRefresh('goNewInstallation', {restore: retoreFlag});
+            }
+            return false;
+        }
+    };
+
+    var inputField = BS.Maintenance.FirstStart.getInputField();
+    if (inputField) {
+        inputField.on("change keyup input paste cut", function() {
+            if ($("#data-directory-location").val()) {
+                $("#proceedButton").removeAttr('disabled');
+                $("#restoreButton").removeAttr('disabled');
+            } else {
+                $("#proceedButton").attr('disabled','disabled');
+                $("#restoreButton").attr('disabled','disabled');
+            }
+        });
+    }
+
+</script>
+
+<style type="text/css">
+  .btn {
+    margin-right: 1ex;
+  }
+</style></body></html>
