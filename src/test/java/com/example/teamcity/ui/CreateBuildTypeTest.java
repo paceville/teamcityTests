@@ -13,6 +13,8 @@ import org.junit.jupiter.api.*;
 
 import java.time.Duration;
 
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selenide.$;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
@@ -28,36 +30,51 @@ public class CreateBuildTypeTest extends BaseUiTests {
     }
 
     @Test
-    @DisplayName("User should be able to create a new build configuration")
+    @DisplayName("User should be able to create a new build configuration via UI clicks")
     @Tags({
-        @Tag("regression"),
-        @Tag("positive")
+            @Tag("regression"),
+            @Tag("positive")
     })
-    public void userCreatesBuildConfigurationTest() {
+    public void userCreatesBuildConfigurationViaUiTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
 
-        step("Create a project via API");
-        superUserCheckRequests.getRequest(Endpoint.PROJECTS).create(project);
+        step("Create a project via API", () -> {
+            superUserCheckRequests.getRequest(Endpoint.PROJECTS).create(project);
+        });
 
-        step("Login as user");
-        loginAsUser(user);
+        step("Login as user", () -> {
+            loginAsUser(user);
+        });
 
-        step("Open 'Create Build Configuration Page'");
-        CreateBuildTypePage.open(project.getId())
-                .createForm(REPO_URL)
-                .setupBuildType(buildType.getName());
+        step("Open project page via UI", () -> {
+            ProjectPage.open(project.getId())
+                    .title.shouldHave(Condition.exactText(project.getName()));
+        });
 
-        step("Get created build type via API");
-        var createdBuildType = superUserCheckRequests.<BuildType>getRequest(Endpoint.BUILD_TYPES)
-                .read("name:" + buildType.getName());
+        step("Click on 'New project...' and select 'Create build configuration'", () -> {
+            $("button[title='New project...']").click(); // или $("button").find(Condition.text("New project...")).click();
+            $(byText("Create build configuration")).click();
+        });
 
-        step("Check build type exists via API");
-        softy.assertThat(createdBuildType).isNotNull();
+        step("Fill out form with repository URL", () -> {
+            new CreateBuildTypePage().createForm(REPO_URL);
+        });
 
-        step("Check build type is visible in UI");
-        ProjectPage.open(project.getId())
-                .title.shouldHave(Condition.exactText(project.getName()));
+        step("Enter build configuration name and finish setup", () -> {
+            new CreateBuildTypePage().setupBuildType(buildType.getName());
+        });
+
+        step("Verify build configuration exists via API", () -> {
+            var createdBuildType = superUserCheckRequests.<BuildType>getRequest(BUILD_TYPES)
+                    .read("name:" + buildType.getName());
+            softy.assertThat(createdBuildType).isNotNull();
+        });
+
+        step("Verify build configuration is visible on project page", () -> {
+            ProjectPage.open(project.getId())
+                    .title.shouldHave(Condition.exactText(project.getName()));
+        });
 
         afterTest();
     }
