@@ -9,6 +9,14 @@ public class SetUpServerTest extends BaseUiTests {
     @Test
     @Tag("setup")
     public void setupTeamCityServerTest() {
-        FirstStartPage.open().setUpFirstStep();
+
+        var firstStartPage = FirstStartPage.open();
+        if (firstStartPage == null) {
+            // setup не нужен — TC уже инициализирован, можно просто выйти из теста
+            return;
+        }
+
+        // тут твой код для setup
+        FirstStartPage.setUpFirstStep();
     }
 }

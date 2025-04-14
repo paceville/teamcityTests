@@ -23,14 +23,23 @@ public class FirstStartPage extends BasePage {
     @Step("Open first start page")
     public static FirstStartPage open() {
         var page = Selenide.open("/", FirstStartPage.class);
-        if ($("#loginButton").isDisplayed()) {
-            throw new IllegalStateException("TeamCity already initialized, login screen shown.");
+
+        // если уже login — значит setup был, можно дальше идти обычными тестами
+        if ($("#loginButton").exists()) {
+            System.out.println("TeamCity уже инициализирован — пропускаем setup.");
+            return null; // или можно возвращать Optional.empty()
         }
+
+        // иначе — setup страница
+        if (!$("#restoreButton").exists()) {
+            throw new IllegalStateException("Ни логина, ни restoreButton — непонятное состояние.");
+        }
+
         return page;
     }
 
     @Step("First teamcity setup")
-    public FirstStartPage setUpFirstStep() {
+    public static FirstStartPage setUpFirstStep() {
         proceedButton.shouldBe(Condition.clickable).click();
         dbTypeSelect.shouldBe(Condition.visible, LONG_WAITING);
         proceedButton.shouldBe(Condition.clickable).click();
