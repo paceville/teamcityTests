@@ -18,6 +18,7 @@ import java.time.Duration;
 
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$;
 import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
@@ -62,7 +63,8 @@ public class CreateBuildTypeTest extends BaseUiTests {
 
         step("Open new build configuration'", () -> {
             $("button[aria-label^='Jump']").shouldBe(Condition.visible).click();
-            $(byText("New build configuration")).click();
+            $$(("a.ring-link-link")).findBy(Condition.text("New build configuration")).shouldBe(Condition.visible).click();
+
         });
 
         step("Fill out form with repository URL", () -> {
