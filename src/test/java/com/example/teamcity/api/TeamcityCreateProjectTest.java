@@ -44,7 +44,7 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
 
             softy.assertThat(createdProject)
                     .usingRecursiveComparison()
-                    .isEqualTo(testdata.getProject());
+                    .isEqualTo(project);
 
             softy.assertAll();
         });
