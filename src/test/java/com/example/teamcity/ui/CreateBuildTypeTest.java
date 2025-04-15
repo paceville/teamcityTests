@@ -51,10 +51,6 @@ public class CreateBuildTypeTest extends BaseUiTests {
                     .click();
         });
 
-        step("Open new build configuration'", () -> {
-            createBuildTypePage.openNewBuildConfiguration();
-        });
-
         step("Fill out form with repository URL", () -> {
             new CreateBuildTypePage().createForm(REPO_URL);
         });
