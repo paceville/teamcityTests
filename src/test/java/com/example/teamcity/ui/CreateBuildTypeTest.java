@@ -46,7 +46,9 @@ public class CreateBuildTypeTest extends BaseUiTests {
         });
 
         step("Open project page via UI", () -> {
-            createBuildTypePage.openProjectViaUi(project.getName());
+            Selenide.$(String.format("span[title='%s'] span.MiddleEllipsis__searchable--uZ", project.getName()))
+                    .shouldBe(Condition.visible, Duration.ofSeconds(10))
+                    .click();
         });
 
         step("Open new build configuration'", () -> {
@@ -108,7 +110,7 @@ public class CreateBuildTypeTest extends BaseUiTests {
         softy.assertThat(response.statusCode()).isEqualTo(404);
 
         step("Check that build type is null");
-        softy.assertThat(response.asString()).isEmpty(); // Проверяем, что ответ пустой
+        softy.assertThat(response.asString()).isEmpty();
     }
 
 }
