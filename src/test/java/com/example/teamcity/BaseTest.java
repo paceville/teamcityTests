@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 
 public class BaseTest {
     protected SoftAssertions softy;
+
     protected CheckedRequests superUserCheckRequests = new CheckedRequests(Specifications.superUserAuthSpec());
 
     @BeforeEach

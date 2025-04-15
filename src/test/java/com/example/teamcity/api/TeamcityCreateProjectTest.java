@@ -19,6 +19,7 @@ import static com.example.teamcity.api.generators.TestDataGenerator.generate;
 import static com.example.teamcity.api.requests.enums.Endpoint.PROJECTS;
 import static com.example.teamcity.api.requests.enums.Endpoint.USERS;
 import static io.qameta.allure.Allure.step;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SuiteDisplayName("newProjectCreation")
 public class TeamcityCreateProjectTest extends BaseApiTest {
@@ -37,26 +38,15 @@ public class TeamcityCreateProjectTest extends BaseApiTest {
         var project = generate(Project.class);
         var projectId = createProject(user, project);
 
-        //var user = testdata.getUser();
-        //var project = testdata.getProject();
-        //var projectId = project.getId();
-
-        //createUser(user);
-
-        System.out.println("User: " + user);
-        System.out.println("Project: " + project);
-        System.out.println("ProjectID: " + projectId);
-
         step("check project was created successfully with correct data", () -> {
             var requester = new CheckedBase<Project>(Specifications.authSpec(user), PROJECTS);
-            System.out.println("Fetching project with ID: " + projectId);
-            System.out.println("Using credentials: " + user.getUsername() + " / " + user.getPassword());
             var createdProject = requester.read(projectId);
-            System.out.println("Created project: " + createdProject);
 
+            softy.assertThat(createdProject)
+                    .usingRecursiveComparison()
+                    .isEqualTo(testdata.getProject());
 
-            softy.assertThat(project.getName()).as("Project name is correct").isEqualTo(createdProject.getName());
-            softy.assertThat(projectId).as("Project id is correct").isEqualTo(createdProject.getId());
+            softy.assertAll();
         });
     }
 
