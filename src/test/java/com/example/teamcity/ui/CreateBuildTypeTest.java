@@ -17,7 +17,6 @@ import static com.example.teamcity.api.requests.enums.Endpoint.*;
 import static io.qameta.allure.Allure.step;
 
 public class CreateBuildTypeTest extends BaseUiTests {
-    CreateBuildTypePage createBuildTypePage;
     User user;
     TestData testdata = generate();
 
@@ -36,6 +35,7 @@ public class CreateBuildTypeTest extends BaseUiTests {
     public void userCreatesBuildConfigurationViaUiTest() {
         var project = testdata.getProject();
         var buildType = testdata.getBuildType();
+        var createBuildTypePage = CreateBuildTypePage.open(project.getId());
 
         step("Create a project via API", () -> {
             superUserCheckRequests.getRequest(Endpoint.PROJECTS).create(project);
