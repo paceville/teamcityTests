@@ -110,4 +110,3 @@ public class CreateBuildTypeTest extends BaseUiTests {
     }
 
 }
-
