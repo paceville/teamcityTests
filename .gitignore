@@ -1,0 +1,38 @@
+# IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Mac
+.DS_Store
+
+# VSCode
+.vscode/
+
+# Maven
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.mvn/
+
+# Gradle (если появится)
+.gradle/
+build/
+
+# Logs
+*.log
+
+# OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Optional: исключить весь workspace.xml (он персональный и не нужен в git)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/misc.xml
+
+
